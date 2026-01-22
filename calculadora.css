@@ -11,6 +11,6 @@
     height: 100vh;
     background: peachpuff;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
