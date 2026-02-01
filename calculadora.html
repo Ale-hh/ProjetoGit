@@ -3,46 +3,71 @@
     <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="calculadora.css">
+     <link rel="stylesheet"  type="text/css" href="calculadora.css">
+     <title>Calculadora</title>
     </head>
     <body>
-     <div class="content">
+     <div class="background">
+        <h1>Calculadora v1</h1>
+        <br>
+        <br>
+        <br>
+        <p><strong>apenas uma calculadora simples onde você pode <br> realizar qualquer operação básica:</strong></p>
         <div class="calculator">
-            <form>
-                <div class="display">
-                    <input type="text" name="display">
-                </div>
-                <div>
-                    <input type="button" value="AC">
-                    <input type="button" value="Del">
-                    <input type="button" value=".">
-                    <input type="button" value="/">
-                </div>
-                <div>
-                    <input type="button" value="7">
-                    <input type="button" value="8">
-                    <input type="button" value="9">
-                    <input type="button" value="*">
-                </div>
-                <div>
-                    <input type="button" value="4">
-                    <input type="button" value="5">
-                    <input type="button" value="6">
-                    <input type="button" value="-">
-                </div>
-                 <div>
-                    <input type="button" value="1">
-                    <input type="button" value="2">
-                    <input type="button" value="3">
-                    <input type="button" value="+">
-                </div>
-                <div>
-                    <input type="button" value="00">
-                    <input type="button" value="0">
-                    <input type="button" value="=">
-                </div>
-            </form>
+        <p id="display"></p>
+        <table>
+            <tr>
+             <td><button class="btn" onclick="clean()">C</button></td>
+             <td><button class="btn" onclick="backspace()">⌫</button></td>
+             <td><button class="btn" onclick="insert('/')">÷</button></td>
+             <td><button class="btn" onclick="insert('*')">×</button></td>
+            </tr>
+            <tr>
+             <td><button class="btn" onclick="insert('7')">7</button></td>
+             <td><button class="btn" onclick="insert('8')">8</button></td>
+             <td><button class="btn" onclick="insert('9')">9</button></td>
+             <td><button class="btn" onclick="insert('-')">-</button></td>
+            </tr>
+            <tr>
+             <td><button class="btn" onclick="insert('4')">4</button></td>
+             <td><button class="btn" onclick="insert('5')">5</button></td>
+             <td><button class="btn" onclick="insert('6')">6</button></td>
+             <td><button class="btn" onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+             <td><button class="btn" onclick="insert('1')">1</button></td>
+             <td><button class="btn" onclick="insert('2')">2</button></td>
+             <td><button class="btn" onclick="insert('3')">3</button></td>
+             <td rowspan="2"><button class="btn" style="height: 106px;" onclick="equalsTo()">=</button></td>
+            </tr>
+            <tr>
+             <td colspan="2"><button class="btn" style="width: 106px;" onclick="insert('0')">0</button></td>
+             <td><button class="btn" onclick="insert('.')">.</button></td>
+            </tr>
+        </table>
         </div>
      </div>
+     <script>
+        function insert(num){
+        let numero = document.getElementById('display').innerHTML;
+        document.getElementById('display').innerHTML = numero + num;
+        }
+        function clean(){
+        document.getElementById('display').innerHTML = ""
+        }
+        function backspace(){
+            let display = document.getElementById('display').innerHTML;
+            document.getElementById('display').innerHTML = display.substring(0, display.length -1);
+        }
+        function equalsTo(){
+            let display = document.getElementById('display').innerHTML;
+            if (display){
+                document.getElementById('display').innerHTML = eval(display);
+            }
+            else{
+                document.getElementById('display').innerHTML = "..."
+            }
+        }
+     </script>
     </body>
 </html>
